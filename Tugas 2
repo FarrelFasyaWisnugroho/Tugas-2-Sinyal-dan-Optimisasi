@@ -1,0 +1,28 @@
+def convolution(x, h):
+    # Length of the input and kernel
+    len_x = len(x)
+    len_h = len(h)
+
+    # Length of the output signal
+    len_y = len_x + len_h - 1
+
+    # Initialize the output signal with zeros
+    y = [0] * len_y
+
+    # Perform convolution
+    for i in range(len_y):
+        for j in range(len_h):
+            if i - j >= 0 and i - j < len_x:
+                y[i] += x[i - j] * h[j]
+
+    return y
+
+# Define two 1D arrays
+x = [1, 2, 3, 4, 5]
+h = [0.5, 0.25, 0.75]
+
+# Perform convolution using your function
+conv_result = convolution(x, h)
+
+# Print the result
+print("Convolution result:", conv_result)
